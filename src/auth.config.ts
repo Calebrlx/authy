@@ -39,9 +39,10 @@ export default {
       id: "tumblr",
       name: "Tumblr",
       type: "oauth",
-      version: "1.0a",
-      scope: [],
-      params: {},
+      version: "1.0", // This should be correct
+      params: {
+        scope: "", // Adjust scope if needed
+      },
       accessTokenUrl: "https://www.tumblr.com/oauth/access_token",
       requestTokenUrl: "https://www.tumblr.com/oauth/request_token",
       authorizationUrl: "https://www.tumblr.com/oauth/authorize?oauth_token=",
