@@ -35,5 +35,26 @@ export default {
         return null;
       },
     }),
+    {
+      id: "tumblr",
+      name: "Tumblr",
+      type: "oauth",
+      version: "1.0a",
+      scope: [],
+      params: {},
+      accessTokenUrl: "https://www.tumblr.com/oauth/access_token",
+      requestTokenUrl: "https://www.tumblr.com/oauth/request_token",
+      authorizationUrl: "https://www.tumblr.com/oauth/authorize?oauth_token=",
+      profileUrl: "https://api.tumblr.com/v2/user/info",
+      profile: (profile) => {
+        return {
+          id: profile.response.user.name,
+          name: profile.response.user.name,
+          email: null, // Tumblr doesn't provide email
+        };
+      },
+      clientId: process.env.TUMBLR_CLIENT_ID,
+      clientSecret: process.env.TUMBLR_CLIENT_SECRET,
+    },
   ],
 } satisfies NextAuthConfig;
