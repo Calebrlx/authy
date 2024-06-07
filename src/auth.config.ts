@@ -39,24 +39,21 @@ export default {
       id: "tumblr",
       name: "Tumblr",
       type: "oauth",
-      // version: "1.0", // This should be correct
-      // params: {
-      //   scope: "", // Adjust scope if needed
-      // },
-      accessTokenUrl: "https://www.tumblr.com/oauth/access_token",
+      version: "1.0", // OAuth 1.0a
+      clientId: process.env.TUMBLR_CLIENT_ID,
+      clientSecret: process.env.TUMBLR_CLIENT_SECRET,
       requestTokenUrl: "https://www.tumblr.com/oauth/request_token",
       authorizationUrl: "https://www.tumblr.com/oauth/authorize?oauth_token=",
+      accessTokenUrl: "https://www.tumblr.com/oauth/access_token",
       profileUrl: "https://api.tumblr.com/v2/user/info",
-      profile: (profile) => {
+      profile: (profile: TumblrProfile) => {
         return {
           id: profile.response.user.name,
           name: profile.response.user.name,
           email: null, // Tumblr doesn't provide email
         };
       },
-      clientId: process.env.TUMBLR_CLIENT_ID,
-      clientSecret: process.env.TUMBLR_CLIENT_SECRET,
-    },
+    } as OAuthConfig<any> & OAuthUserConfig<TumblrProfile>,
   ],
 } satisfies NextAuthConfig;
 
