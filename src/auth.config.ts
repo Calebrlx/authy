@@ -7,6 +7,16 @@ import Google from "next-auth/providers/google";
 import { LoginSchema } from "./schemas";
 import { getUserByEmail } from "./services/user";
 
+
+interface TumblrProfile {
+  response: {
+    user: {
+      name: string;
+    };
+  };
+}
+
+
 export default {
   providers: [
     Github({
